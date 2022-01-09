@@ -37,5 +37,5 @@ for line in lines:
 lines_edges = cv2.addWeighted(img, 0.8, line_image, 1, 0)
 
 cv2.imshow("img", lines_edges)
-cv2.imwrite(f"{join(images_dir,'line_edges.jpg')}", img)
+cv2.imwrite(f"{join(images_dir,'line_edges.jpg')}", lines_edges)
 cv2.waitKey(0)
