@@ -7,6 +7,16 @@ images_dir = join(os.getcwd(), 'images')
 image = 'parking4.jpeg'
 
 image = cv2.imread(f"{join(images_dir,image)}")
+
+print('Original Dimensions : ', image.shape)
+
+scale_percent = 60  # percent of original size
+width = int(image.shape[1] * scale_percent / 100)
+height = int(image.shape[0] * scale_percent / 100)
+dim = (width, height)
+
+# resize image
+image = cv2.resize(image, dim, interpolation=cv2.INTER_AREA)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 edges = cv2.Canny(gray, 50, 150, apertureSize=3)
 lines = cv2.HoughLines(edges, 1, np.pi/180, 200)
