@@ -8,7 +8,7 @@ def draw_contours(image, coordinates, label, font_color, b_color=COL_BLUE, line_
 
     # *Todo*: get center of parking slot rectangle and add slot labels
     M = cv2.moments(coordinates)
-    center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+    center = (int(M["m10"] / M["m00"])-3, int(M["m01"] / M["m00"])+3)
     # label at center of the rectangle
     cv2.putText(image, label, center, font, font_scale,
                 font_color, line_thickness, cv2.LINE_AA)

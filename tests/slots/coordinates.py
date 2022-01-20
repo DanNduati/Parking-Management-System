@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from colours import COL_BLUE, COL_WHITE
+from colours import COL_WHITE
 from drawing_utils import draw_contours
 
 
@@ -44,7 +44,7 @@ class CoordinatesGenerator:
     def __handle_click_progress(self):
         # draw line for last 2 cordinate entries
         cv2.line(self.image, self.coordinates[-2],
-                 self.coordinates[-1], COL_BLUE, 2)
+                 self.coordinates[-1], self.color, 2)
 
     def __handle_done(self):
         # draw lines from the third(index 2) cordinate to the last(index 3) and from the first(index 0) to the last(index 3)
