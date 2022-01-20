@@ -24,6 +24,7 @@ class CoordinatesGenerator:
             cv2.imshow(self.caption, self.image)
             key = cv2.waitKey(0)
             if key == CoordinatesGenerator.KEY_QUIT:
+                # cv2.imwrite(f"tests/slots/images/slots.jpg", self.image)
                 break
         cv2.destroyAllWindows()
 
@@ -43,7 +44,7 @@ class CoordinatesGenerator:
     def __handle_click_progress(self):
         # draw line for last 2 cordinate entries
         cv2.line(self.image, self.coordinates[-2],
-                 self.coordinates[-1], COL_BLUE, 1)
+                 self.coordinates[-1], COL_BLUE, 2)
 
     def __handle_done(self):
         # draw lines from the third(index 2) cordinate to the last(index 3) and from the first(index 0) to the last(index 3)
@@ -56,7 +57,8 @@ class CoordinatesGenerator:
         coordinates = np.array(self.coordinates)
         print(coordinates)
 
-        draw_contours(self.image, coordinates)
+        draw_contours(self.image, coordinates, f"P{self.ids}", COL_WHITE)
         # reset coordinates
         for i in range(len(self.coordinates)):
             self.coordinates.pop()
+        self.ids += 1
