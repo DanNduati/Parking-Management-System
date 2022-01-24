@@ -27,7 +27,7 @@ class CoordinatesGenerator:
             if key == self.KEY_QUIT:
                 # store coordinates to file
                 self.store_slots(self.coordinates_, self.output_file)
-                cv2.imwrite(f"tests/slots/images/slots.jpg", self.image)
+                #cv2.imwrite(f"tests/slots/images/slots.jpg", self.image)
                 break
         cv2.destroyAllWindows()
         return self.coordinates_
