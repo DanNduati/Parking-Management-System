@@ -1,0 +1,5 @@
+COL_BLACK = (0, 0, 0)
+COL_WHITE = (255, 255, 255)
+COL_RED = (0, 0, 255)
+COL_GREEN = (0, 255, 0)
+COL_BLUE = (255, 0, 0)
