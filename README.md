@@ -18,10 +18,10 @@ opencv
 
 ### To Do List
 
-- [ ] Automatic slot detection
+<s>  [ ] Automatic slot detection</s>
+
 - [x] Slot drawing with mouse callback functions
-- [ ] Vehicle occupancy Detection
-- [ ] Occupancy Timing
+- [x] Vehicle occupancy Detection
 - [ ] Socket/API server communication
 - [x] Praying that this thing works
 
