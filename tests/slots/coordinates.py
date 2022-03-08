@@ -26,7 +26,7 @@ class CoordinatesGenerator:
             key = cv2.waitKey(0)
             if key == self.KEY_QUIT:
                 # store coordinates to file
-                self.store_slots(self.coordinates_, self.output_file)
+                # self.store_slots(self.coordinates_, self.output_file)
                 #cv2.imwrite(f"tests/slots/images/slots.jpg", self.image)
                 break
         cv2.destroyAllWindows()
@@ -57,6 +57,11 @@ class CoordinatesGenerator:
         # reset click count
         self.click_count = 0
         coordinates = np.array(self.coordinates)
+        self.output_file.write("-\n          id: " + str(self.ids) + "\n          coordinates: [" +
+                               "[" + str(self.coordinates[0][0]) + "," + str(self.coordinates[0][1]) + "]," +
+                               "[" + str(self.coordinates[1][0]) + "," + str(self.coordinates[1][1]) + "]," +
+                               "[" + str(self.coordinates[2][0]) + "," + str(self.coordinates[2][1]) + "]," +
+                               "[" + str(self.coordinates[3][0]) + "," + str(self.coordinates[3][1]) + "]]\n")
         # append coordinates to the coordinates_ list
         self.coordinates_.append(coordinates.tolist())
         draw_contours(self.image, coordinates, f"SLOT{self.ids}", COL_WHITE)
@@ -65,6 +70,8 @@ class CoordinatesGenerator:
             self.coordinates.pop()
         self.ids += 1
 
+
+"""
     def store_slots(self, coordinates, file_):
         '''
         # json template of how i want to store slot data
@@ -82,9 +89,11 @@ class CoordinatesGenerator:
         slots = dict()
         for i, cord in enumerate(coordinates):
             slots[i] = {
-                "id": f"slot{i}",
+                "id": i,
                 "coordinates": cord
             }
-        print(slots)
+
         with open(file_, 'w') as f:
             json.dump(slots, f)
+        file_.close()
+"""

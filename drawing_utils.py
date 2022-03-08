@@ -1,14 +1,31 @@
-import cv2
-from colours import COL_BLUE
+import cv2 as open_cv
+from colours import COLOR_BLUE
 
 
-def draw_contours(image, coordinates, label, font_color, b_color=COL_BLUE, line_thickness=2, font=cv2.FONT_HERSHEY_SIMPLEX, font_scale=0.5):
-    cv2.drawContours(image, [coordinates], contourIdx=-1,
-                     color=b_color, thickness=2, lineType=cv2.LINE_8)
+def draw_contours(image,
+                  coordinates,
+                  label,
+                  font_color,
+                  border_color=COLOR_BLUE,
+                  line_thickness=1,
+                  font=open_cv.FONT_HERSHEY_SIMPLEX,
+                  font_scale=0.5):
+    open_cv.drawContours(image,
+                         [coordinates],
+                         contourIdx=-1,
+                         color=border_color,
+                         thickness=2,
+                         lineType=open_cv.LINE_8)
+    moments = open_cv.moments(coordinates)
 
-    # *Todo*: get center of parking slot rectangle and add slot labels
-    M = cv2.moments(coordinates)
-    center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
-    # label at center of the rectangle
-    cv2.putText(image, label, center, font, font_scale,
-                font_color, line_thickness, cv2.LINE_AA)
+    center = (int(moments["m10"] / moments["m00"]) - 3,
+              int(moments["m01"] / moments["m00"]) + 3)
+
+    open_cv.putText(image,
+                    label,
+                    center,
+                    font,
+                    font_scale,
+                    font_color,
+                    line_thickness,
+                    open_cv.LINE_AA)
