@@ -24,8 +24,8 @@ opencv
 - [x] Vehicle occupancy Detection
 - [ ] Socket/API server communication
 - [x] Praying that this thing works
-
-## Running on the pi
+- [ ] Add argparser cli interface to switch between images and video streams
+## Running on the pi or locally
 ### clone the repository and navigate to the project directory
 ```bash
 git clone git@github.com:DanNduati/Parking-Management-System.git
@@ -35,6 +35,10 @@ cd parking_management_system/
 ```bash
 python3 -m venv venv
 source venv/bin/activate
+```
+### Run the script
+```bash
+python main.py
 ```
 
 ## License
