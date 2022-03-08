@@ -7,14 +7,15 @@ The goal of the system is to automate paking management, the system should use t
 
 | <img  src="images/kimathi4.png"></img> 	| <img  src="tests/slots/images/slots.jpg"></img> 	|
 |:----------------------------------------------:	|:----------------------------------------------:	|
-
+## Demo
+<img  src="videos/demo.gif"></img>
 ## Hardware
 1. Raspberry Pi 3 model B
 2. Raspberry Pi camera v2 8MP
 
 ## Prerequisites
-Python 3
-opencv
+- Python 3
+- opencv
 
 ### To Do List
 
