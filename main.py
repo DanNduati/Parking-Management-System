@@ -8,7 +8,6 @@ from colours import *
 
 def main():
     logging.basicConfig(level=logging.INFO)
-
     image_file = "images/kimathi3.png"
     data_file = "data/coordinates.yml"
     start_frame = 0

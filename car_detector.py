@@ -1,8 +1,9 @@
 import cv2 as open_cv
+import imutils
 import numpy as np
 import logging
 from drawing_utils import draw_contours
-from colours import COLOR_GREEN, COLOR_WHITE, COLOR_BLUE
+from colours import COLOR_GREEN, COLOR_WHITE, COLOR_RED
 
 
 class MotionDetector:
@@ -20,7 +21,6 @@ class MotionDetector:
     def detect_motion(self):
         capture = open_cv.VideoCapture(self.video)
         capture.set(open_cv.CAP_PROP_POS_FRAMES, self.start_frame)
-
         coordinates_data = self.coordinates_data
         logging.debug("coordinates data: %s", coordinates_data)
 
@@ -90,11 +90,11 @@ class MotionDetector:
             for index, p in enumerate(coordinates_data):
                 coordinates = self._coordinates(p)
 
-                color = COLOR_GREEN if statuses[index] else COLOR_BLUE
+                color = COLOR_GREEN if statuses[index] else COLOR_RED
                 draw_contours(new_frame, coordinates, str(
                     p["id"] + 1), COLOR_WHITE, color)
-
-            open_cv.imshow(str(self.video), new_frame)
+            newframe = open_cv.resize(new_frame, (1920, 1024))
+            open_cv.imshow(str(self.video), newframe)
             k = open_cv.waitKey(10)
             if k == ord("q"):
                 break
